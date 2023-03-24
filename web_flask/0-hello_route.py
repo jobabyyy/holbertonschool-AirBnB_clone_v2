@@ -1,6 +1,10 @@
 #!/usr/bin/python3
+<<<<<<< HEAD
 """Starting Flask web application"""
 
+=======
+"""Starting Flast web application"""
+>>>>>>> b215705d9fd07f2073d1b8578473a537994f4b34
 from flask import Flask
 
 app = Flask(__name__)

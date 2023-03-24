@@ -1,7 +1,7 @@
 #!/usr/bin/python3
-"""n is for number"""
+"""adding html"""
 
-from flask import Flask
+from flask import Flask, render_template
 
 app = Flask(__name__)
 

@@ -42,7 +42,7 @@ class FileStorage:
             json.dump(temp, f)
 
     def reload(self):
-        """deserializes the JSON file to __objects"""
+        """Deserializes the JSON file to __objects"""
         try:
             with open(self.__file_path, 'r') as f:
                 dataDict = json.load(f)
@@ -60,8 +60,5 @@ class FileStorage:
                 del self.__objects[key]
 
     def close(self):
-        """method for deserializing the JSON file to objects"""
-        try:
-            self.reload()
-        except Exception:
-            pass
+        """Calls reload method for deserializing the JSON file to objects"""
+        self.reload()

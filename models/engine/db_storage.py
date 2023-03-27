@@ -1,5 +1,4 @@
 #!/usr/bin/python3
-""""""
 from models.base_model import Base
 from os import getenv
 from sqlalchemy import create_engine
@@ -72,8 +71,8 @@ class DBStorage:
         Base.metadata.create_all(self.__engine)
         newSession = sessionmaker(bind=self.__engine, expire_on_commit=False)
         Session = scoped_session(newSession)
-        self.__session = Session
+        self.__session = Session()
 
     def close(self):
         """Closes scoped session"""
-        self.__session.close()
+        self.__session.remove()

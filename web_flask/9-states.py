@@ -13,18 +13,24 @@ def states_list():
     states = storage.all(State)
     return render_template('7-states_list.html', states=states)
 
-
-@app.route('/states/<id>', strict_slashes=False)
+@app.route("/states/<id>", strict_slashes=False)
 def states_id(id):
-    """Display a HTML page of City objects linked to a State object"""
-    state = storage.get(State, id)
-    if state is None:
-        return render_template('9-states.html', not_found=True)
-    else:
-        cities = state.cities if type(storage).__name__ == 'DBStorage' \
-                 else state.cities()
-        return render_template('9-states.html', state=state, cities=cities)
-
+    """
+    Routes:
+    /states/<id>: display a HTML page: (inside the tag BODY)
+    If a State object is found with this id:
+    H1 tag: "State: "
+    H3 tag: "Cities:"
+    UL tag: with the list of City objects linked
+    to the State sorted by name (A->Z)
+    LI tag: description of one City: <city.id>: <B><city.name></B>
+    Otherwise:
+    H1 tag: "Not found!"
+    """
+    for state in storage.all("State").values():
+        if state.id == id:
+            return render_template("9-states.html", state=state)
+    return render_template("9-states.html")
 
 @app.teardown_appcontext
 def teardown_db(exception):

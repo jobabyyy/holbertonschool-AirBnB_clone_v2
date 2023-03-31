@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """states"""
 
-from flask import Flask, render_template
+from flask import Flask render_template
 from models import storage, State
 
 app = Flask(__name__)
